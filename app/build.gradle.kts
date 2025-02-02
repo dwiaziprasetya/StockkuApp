@@ -6,11 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.stokkuai"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.stokkuai"
         minSdk = 24
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
