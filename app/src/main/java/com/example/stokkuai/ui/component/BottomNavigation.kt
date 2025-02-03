@@ -21,6 +21,7 @@ import com.example.stokkuai.R
 import com.example.stokkuai.ui.navigation.model.BottomBarItem
 import com.example.stokkuai.ui.navigation.model.Screen
 import com.example.stokkuai.ui.theme.StokkuAITheme
+import com.example.stokkuai.ui.theme.poppinsFontFamily
 
 @Composable
 fun BottomNavigation(
@@ -29,16 +30,6 @@ fun BottomNavigation(
 ) {
     NavigationBar(
         containerColor = Color.White,
-        modifier = modifier
-            .drawWithContent {
-                drawContent()
-                drawLine(
-                    color = Color(0xFFE3E3E3),
-                    start = Offset(0f, 0f),
-                    end = Offset(size.width, 0f),
-                    strokeWidth = 2f
-                )
-            }
     ) {
         val navBackStackEntry = navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry.value?.destination?.route
@@ -56,13 +47,13 @@ fun BottomNavigation(
                 screen = Screen.History
             ),
             BottomBarItem(
-                title = "Scan",
+                title = "",
                 icon = painterResource(R.drawable.icon_scan),
                 iconSelected = painterResource(R.drawable.icon_scan),
                 screen = Screen.Scan
             ),
             BottomBarItem(
-                title = "Stock",
+                title = "Stocks",
                 icon = painterResource(R.drawable.icon_chart_stock),
                 iconSelected = painterResource(R.drawable.icon_chart_stock),
                 screen = Screen.StockList
@@ -83,13 +74,15 @@ fun BottomNavigation(
                     if (isSelected) {
                         Text(
                             text = item.title,
-                            fontWeight = FontWeight.Medium,
+                            fontFamily = poppinsFontFamily,
+                            fontWeight = FontWeight.SemiBold,
                             color = MaterialTheme.colorScheme.primary
                         )
                     } else {
                         Text(
                             text = item.title,
-                            fontWeight = FontWeight.Medium,
+                            fontFamily = poppinsFontFamily,
+                            fontWeight = FontWeight.SemiBold,
                             color = MaterialTheme.colorScheme.outline
                         )
                     }
