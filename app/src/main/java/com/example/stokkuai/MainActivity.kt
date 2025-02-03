@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.stokkuai.ui.screen.home.HomeScreen
+import androidx.navigation.compose.rememberNavController
 import com.example.stokkuai.ui.theme.StokkuAITheme
 
 class MainActivity : ComponentActivity() {
@@ -12,8 +12,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            StokkuAITheme {
-                HomeScreen()
+            StokkuAITheme(dynamicColor = false) {
+                RootNavigationGraph(
+                    navController = rememberNavController(),
+                )
             }
         }
     }

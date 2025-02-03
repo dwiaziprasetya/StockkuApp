@@ -56,7 +56,7 @@ fun BottomNavigation(
                 screen = Screen.Scan
             ),
             BottomBarItem(
-                title = "Stock List",
+                title = "Stock",
                 icon = painterResource(R.drawable.icon_chart_stock),
                 iconSelected = painterResource(R.drawable.icon_chart_stock),
                 screen = Screen.StockList

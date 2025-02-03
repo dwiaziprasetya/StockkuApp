@@ -1,15 +1,23 @@
 package com.example.stokkuai
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
-import com.example.stokkuai.ui.screen.main.MainViewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import com.example.stokkuai.ui.navigation.model.Screen
+import com.example.stokkuai.ui.screen.main.MainScreen
 
 @Composable
 fun RootNavigationGraph(
     navController: NavHostController,
-    viewModel: MainViewModel
 ) {
-    
+    NavHost(
+        navController = navController,
+        route = Screen.Root.route,
+        startDestination = Screen.Main.route
+    ) {
+        composable(route = Screen.Main.route) {
+            MainScreen()
+        }
+    }
 }
