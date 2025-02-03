@@ -28,7 +28,7 @@ fun BottomNavigation(
     navController: NavHostController
 ) {
     NavigationBar(
-        containerColor = MaterialTheme.colorScheme.background,
+        containerColor = Color.White,
         modifier = modifier
             .drawWithContent {
                 drawContent()
@@ -50,6 +50,12 @@ fun BottomNavigation(
                 screen = Screen.Home
             ),
             BottomBarItem(
+                title = "History",
+                icon = painterResource(R.drawable.icon_history),
+                iconSelected = painterResource(R.drawable.icon_history),
+                screen = Screen.History
+            ),
+            BottomBarItem(
                 title = "Scan",
                 icon = painterResource(R.drawable.icon_scan),
                 iconSelected = painterResource(R.drawable.icon_scan),
@@ -60,6 +66,12 @@ fun BottomNavigation(
                 icon = painterResource(R.drawable.icon_chart_stock),
                 iconSelected = painterResource(R.drawable.icon_chart_stock),
                 screen = Screen.StockList
+            ),
+            BottomBarItem(
+                title = "Account",
+                icon = painterResource(R.drawable.icon_user_account),
+                iconSelected = painterResource(R.drawable.icon_user_account),
+                screen = Screen.UserAccount
             ),
         )
         navigationItems.map { item ->
