@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.stokkuai.ui.navigation.graph.authNav
 import com.example.stokkuai.ui.navigation.model.Screen
 import com.example.stokkuai.ui.screen.main.MainScreen
 
@@ -16,6 +17,7 @@ fun RootNavigationGraph(
         route = Screen.Root.route,
         startDestination = Screen.Main.route
     ) {
+        authNav()
         composable(route = Screen.Main.route) {
             MainScreen()
         }
