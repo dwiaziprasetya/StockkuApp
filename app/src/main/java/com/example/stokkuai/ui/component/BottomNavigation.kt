@@ -8,8 +8,6 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -42,10 +40,10 @@ fun BottomNavigation(
                 screen = Screen.Home
             ),
             BottomBarItem(
-                title = "History",
-                icon = painterResource(R.drawable.icon_history),
-                iconSelected = painterResource(R.drawable.icon_history),
-                screen = Screen.History
+                title = "Stocks",
+                icon = painterResource(R.drawable.icon_chart_stock),
+                iconSelected = painterResource(R.drawable.icon_chart_stock),
+                screen = Screen.StockList
             ),
             BottomBarItem(
                 title = "",
@@ -54,10 +52,10 @@ fun BottomNavigation(
                 screen = Screen.Scan
             ),
             BottomBarItem(
-                title = "Stocks",
-                icon = painterResource(R.drawable.icon_chart_stock),
-                iconSelected = painterResource(R.drawable.icon_chart_stock),
-                screen = Screen.StockList
+                title = "History",
+                icon = painterResource(R.drawable.icon_history),
+                iconSelected = painterResource(R.drawable.icon_history),
+                screen = Screen.History
             ),
             BottomBarItem(
                 title = "Account",
