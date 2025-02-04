@@ -9,7 +9,7 @@ import com.example.stokkuai.ui.screen.welcome.WelcomeScreen
 fun NavGraphBuilder.authNav(){
     navigation(
         startDestination = Screen.Welcome.route,
-        route = Screen.Root.route
+        route = Screen.Auth.route
     ) {
         composable(Screen.Welcome.route) {
             WelcomeScreen()

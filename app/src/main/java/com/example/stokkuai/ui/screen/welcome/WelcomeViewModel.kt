@@ -11,24 +11,4 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.stokkuai.ui.theme.StokkuAITheme
 
-@Composable
-fun WelcomeScreen() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background),
-    ){
-        Text(
-            text = "Welcome Screen",
-            modifier = Modifier.align(Alignment.Center)
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun HistoryScreenPreview() {
-    StokkuAITheme {
-        WelcomeScreen()
-    }
-}
+class WelcomeViewModel {}
