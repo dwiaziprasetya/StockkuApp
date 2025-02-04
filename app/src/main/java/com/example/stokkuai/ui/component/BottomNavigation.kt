@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -69,7 +70,15 @@ fun BottomNavigation(
             val isSelected = currentRoute == item.screen.route
             NavigationBarItem(
                 selected = isSelected,
-                onClick = {},
+                onClick = {
+                    navController.navigate(item.screen.route) {
+                        popUpTo(navController.graph.findStartDestination().id){
+                            saveState = true
+                        }
+                        restoreState = true
+                        launchSingleTop = true
+                    }
+                },
                 label = {
                     if (isSelected) {
                         Text(
@@ -98,7 +107,7 @@ fun BottomNavigation(
                         if (item.title != "") {
                             Icon(
                                 painter = item.icon,
-                                tint = MaterialTheme.colorScheme.outline,
+                                tint = Color(0xFFB2B6BA),
                                 contentDescription = item.title
                             )
                         }

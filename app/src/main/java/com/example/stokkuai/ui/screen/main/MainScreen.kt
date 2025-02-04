@@ -17,11 +17,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.stokkuai.R
 import com.example.stokkuai.ui.component.BottomNavigation
 import com.example.stokkuai.ui.navigation.graph.MainNavGraph
+import com.example.stokkuai.ui.navigation.model.Screen
 import com.example.stokkuai.ui.theme.StokkuAITheme
 
 @Composable
@@ -34,7 +36,15 @@ fun MainScreen(
             Box {
                 FloatingActionButton(
                     containerColor = MaterialTheme.colorScheme.primary,
-                    onClick = {},
+                    onClick = {
+                        navController.navigate(Screen.Scan.route) {
+                            popUpTo(navController.graph.findStartDestination().id){
+                                saveState = true
+                            }
+                            restoreState = true
+                            launchSingleTop = true
+                        }
+                    },
                     elevation = FloatingActionButtonDefaults.elevation(
                         defaultElevation = 0.dp,
                         pressedElevation = 0.dp

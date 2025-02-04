@@ -8,7 +8,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.stokkuai.ui.navigation.model.Screen
+import com.example.stokkuai.ui.screen.account.AccountScreen
+import com.example.stokkuai.ui.screen.history.HistoryScreen
 import com.example.stokkuai.ui.screen.home.HomeScreen
+import com.example.stokkuai.ui.screen.scan.ScanScreen
+import com.example.stokkuai.ui.screen.stocklist.StockListScreen
 
 @Composable
 fun MainNavGraph(
@@ -23,6 +27,18 @@ fun MainNavGraph(
     ) {
         composable(route = Screen.Home.route) {
             HomeScreen()
+        }
+        composable(route = Screen.Scan.route) {
+            ScanScreen()
+        }
+        composable(route = Screen.StockList.route) {
+            StockListScreen()
+        }
+        composable(route = Screen.UserAccount.route) {
+            AccountScreen()
+        }
+        composable(route = Screen.History.route) {
+            HistoryScreen()
         }
     }
 }
