@@ -10,9 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.stokkuai.ui.navigation.graph.authNav
-import com.example.stokkuai.ui.navigation.model.Screen
-import com.example.stokkuai.ui.screen.main.MainScreen
+import com.example.stokkuai.presentation.navigation.graph.authNav
+import com.example.stokkuai.presentation.navigation.model.Screen
+import com.example.stokkuai.presentation.ui.screen.main.MainScreen
 
 @Composable
 fun RootNavigationGraph(
