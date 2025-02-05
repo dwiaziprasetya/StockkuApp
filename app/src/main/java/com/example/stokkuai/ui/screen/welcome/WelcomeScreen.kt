@@ -3,6 +3,7 @@ package com.example.stokkuai.ui.screen.welcome
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -80,7 +81,7 @@ fun WelcomeScreen(modifier: Modifier = Modifier) {
                         modifier = Modifier
                             .padding(bottom = 16.dp)
                             .fillMaxWidth()
-                            .height(300.dp),
+                            .height(280.dp),
                         contentScale = ContentScale.FillHeight
                     )
                     Spacer(modifier = Modifier.height(16.dp))
@@ -96,7 +97,7 @@ fun WelcomeScreen(modifier: Modifier = Modifier) {
                             text = sliderImage[page].title,
                             fontFamily = poppinsFontFamily,
                             fontWeight = FontWeight.Bold,
-                            fontSize = 35.sp
+                            fontSize = 30.sp
                         )
                         Text(
                             textAlign = TextAlign.Center,
@@ -114,7 +115,7 @@ fun WelcomeScreen(modifier: Modifier = Modifier) {
                 selectedPage = pagerState.currentPage,
                 animationDurationMillis = 500
             )
-            Spacer(modifier = Modifier.height(70.dp))
+            Spacer(modifier = Modifier.height(50.dp))
             Button(
                 modifier = Modifier
                     .padding(bottom = 16.dp)
@@ -129,30 +130,32 @@ fun WelcomeScreen(modifier: Modifier = Modifier) {
                 Text(
                     fontFamily = poppinsFontFamily,
                     text = "Create Account",
-                    fontSize = 18.sp,
+                    fontSize = 16.sp,
                     color = Color.White,
                     modifier = Modifier
                 )
             }
             Button(
                 modifier = Modifier
-                    .padding(bottom = 32.dp)
+                    .padding(bottom = 16.dp)
                     .height(55.dp)
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(10.dp),
+                border = BorderStroke(1.dp, Color(0xFFC8C8C8)),
                 onClick = {},
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.LightGray
+                    containerColor = MaterialTheme.colorScheme.background
                 )
             ) {
                 Text(
                     fontFamily = poppinsFontFamily,
                     text = "Login",
-                    fontSize = 18.sp,
+                    fontSize = 16.sp,
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier
                 )
             }
+
         }
     }
 
