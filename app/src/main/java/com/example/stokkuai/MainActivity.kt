@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
 import com.example.stokkuai.presentation.theme.StokkuAITheme
+import com.example.stokkuai.presentation.ui.screen.auth.login.LoginScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,9 +14,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             StokkuAITheme(dynamicColor = false) {
-                RootNavigationGraph(
-                    navController = rememberNavController(),
-                )
+//                RootNavigationGraph(
+//                    navController = rememberNavController(),
+//                )
+                LoginScreen()
             }
         }
     }
