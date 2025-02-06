@@ -30,11 +30,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -57,7 +54,6 @@ fun LoginScreen(modifier: Modifier = Modifier) {
         password = "wakakaka",
         onUsernameChange = {},
         onPasswordChange = {},
-        icon = painterResource(R.drawable.icon_visibility_off),
         passwordVisibility = false,
         onPasswordVisibilityChange = {},
         onSignUpClick = {},
@@ -73,7 +69,6 @@ fun LoginContent(
     password: String,
     onUsernameChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
-    icon: Painter,
     passwordVisibility: Boolean,
     onPasswordVisibilityChange: () -> Unit,
     onSignUpClick: () -> Unit,
@@ -119,7 +114,8 @@ fun LoginContent(
                 value = username,
                 hint = stringResource(R.string.enter_your_username),
                 onValueChange = onUsernameChange,
-                trailingIcon = {},
+                trailingIconResId = R.drawable.icon_email,
+                onTrailingIconClick = {},
                 isError = false,
                 errorMessage = "",
                 leadingIconResId = R.drawable.icon_email
@@ -128,13 +124,8 @@ fun LoginContent(
                 value = password,
                 hint = stringResource(R.string.enter_your_password),
                 onValueChange = onPasswordChange,
-                trailingIcon = {
-                    Icon(
-                        painter = icon,
-                        contentDescription = null,
-                        modifier = Modifier.clickable { onPasswordVisibilityChange() }
-                    )
-                },
+                trailingIconResId = R.drawable.icon_visibility_off, // Sesuaikan dengan ikon visibility password
+                onTrailingIconClick = { onPasswordVisibilityChange() },
                 isError = passwordError,
                 errorMessage = stringResource(R.string.error_password),
                 visualTransformation = if (passwordVisibility) VisualTransformation.None
@@ -263,7 +254,8 @@ fun LoginContent(
 fun CustomOutlinedTextField(
     value: String,
     onValueChange: (String) -> Unit,
-    trailingIcon: @Composable () -> Unit,
+    trailingIconResId: Int,
+    onTrailingIconClick: () -> Unit,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     isError: Boolean,
     leadingIconResId: Int,
@@ -271,8 +263,6 @@ fun CustomOutlinedTextField(
     hint: String = ""
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
-    val focusRequester = remember { FocusRequester() }
-    val focusManager = LocalFocusManager.current
     var isFocused by remember { mutableStateOf(false) }
 
     OutlinedTextField(
@@ -314,7 +304,16 @@ fun CustomOutlinedTextField(
             .fillMaxWidth()
             .onFocusChanged { isFocused = it.isFocused },
         trailingIcon = {
-            trailingIcon()
+            Icon(
+                painter = painterResource(trailingIconResId),
+                contentDescription = null,
+                tint = when {
+                    isError -> MaterialTheme.colorScheme.error
+                    isFocused -> MaterialTheme.colorScheme.primary
+                    else -> MaterialTheme.colorScheme.onPrimary
+                },
+                modifier = Modifier.clickable { onTrailingIconClick() }
+            )
         },
         visualTransformation = visualTransformation,
         textStyle = TextStyle(
@@ -346,7 +345,6 @@ private fun LoginContentPreview() {
             password = "",
             onUsernameChange = {},
             onPasswordChange = {},
-            icon = painterResource(R.drawable.icon_visibility_off),
             passwordVisibility = true,
             onPasswordVisibilityChange = {},
             onSignUpClick = {},
